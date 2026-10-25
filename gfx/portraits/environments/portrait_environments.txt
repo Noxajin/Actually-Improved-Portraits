@@ -1,0 +1,1349 @@
+﻿@main_light_radius = 260
+@main_light_height = 460
+@main_light_angle = 20
+@main_cubemap_intensity = 0.8
+
+#########################################################################
+#########################################################################
+#																		#
+#							MAIN ENVIRONMENTS							#
+#																		#
+#########################################################################
+#########################################################################
+
+environment_standard = {
+	cubemap = "gfx/portraits/environments/castle_interior_01.dds"
+	cubemap_intensity = 2.8
+
+	lights = {
+		#########################################################################
+		#								KEY LIGHT								#
+		#########################################################################
+		0 = {
+			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+			affected_by_shadow = yes
+
+			color = hsv{ 0.01 0.01 5 }	# Hue, saturation, value. Increase value for more intense lights
+			position = cylindrical{ 340 250 -55 } # Radius, height, angle
+
+			# For spot lights and directional lights
+			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+			# For spot lights and point lights
+			radius = 2000
+			falloff = 120
+
+			# For point lights
+			outer_cone_angle = 50
+			inner_cone_angle = 0
+		}
+
+		# #########################################################################
+		# #							RIGHT RIM LIGHT								#
+		# #########################################################################
+		1 = {
+			type = "spot_light"
+			affected_by_shadow = yes
+
+			color = hsv{ 0.01 0.1 5 }
+			
+			position = cylindrical{ 552 60 -215 }
+
+			look_at = { 10 -15 0 }
+			look_at_node = camera_torso_look_at
+
+			radius = 2100
+			falloff = 220
+
+			outer_cone_angle = 28
+			inner_cone_angle = 5
+		}
+
+		# #########################################################################
+		# #							LEFT RIM LIGHT								#
+		# #########################################################################
+		2 = {
+			type = "spot_light"
+			affected_by_shadow = yes
+
+			color = hsv{ 0.02 0.21 6 }
+			position = cylindrical{ 1200 210 245 }
+
+			look_at = { 0 18 0 }
+
+			# For spot lights and directional lights
+			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+			# For spot lights and point lights
+			radius = 3300
+			falloff = 2220
+
+			# For spot lights
+			outer_cone_angle = 100
+			inner_cone_angle = 80
+
+		}
+	}
+
+
+	
+
+
+	shadow_camera = {
+		position = cylindrical { 330 220 225 }
+		look_at = { 0 0 0 }
+		look_at_node = camera_torso_look_at
+		fov = 50
+		camera_near_far = { 100 1350 }
+	}
+}
+
+
+agitator_main_environment = {
+	cubemap = "gfx/portraits/environments/castle_interior_01.dds"
+	cubemap_intensity = 2.8
+
+	lights = {
+		#########################################################################
+		#								KEY LIGHT								#
+		#########################################################################
+		0 = {
+			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+			affected_by_shadow = yes
+
+			color = hsv{ 1.01 0.01 6 }	# Hue, saturation, value. Increase value for more intense lights
+			position = cylindrical{ 340 120 305 } # Radius, height, angle
+
+			# For spot lights and directional lights
+			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+			# For spot lights and point lights
+			radius = 2000
+			falloff = 120
+
+			# For point lights
+			outer_cone_angle = 50
+			inner_cone_angle = 0
+		}
+
+		# #########################################################################
+		# #							RIGHT RIM LIGHT								#
+		# #########################################################################
+		1 = {
+			type = "spot_light"
+			affected_by_shadow = yes
+
+			color = hsv{ 1 1 3.8 }
+			
+			position = cylindrical{ 452 210 -215 }
+
+			look_at = { 10 -15 0 }
+			look_at_node = camera_torso_look_at
+
+			radius = 2100
+			falloff = 220
+
+			outer_cone_angle = 28
+			inner_cone_angle = 5
+		}
+
+		# #########################################################################
+		# #							LEFT RIM LIGHT								#
+		# #########################################################################
+		2 = {
+			type = "spot_light"
+			affected_by_shadow = yes
+
+				color = hsv{ 1 0.6 3 }	# Hue, saturation, value. Increase value for more intense lights
+			position = cylindrical{ 452 270 225 }
+
+			# For spot lights and directional lights
+			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+			# For spot lights and point lights
+			radius = 2000
+			falloff = 220
+
+			# For spot lights
+			outer_cone_angle = 100
+			inner_cone_angle = 80
+
+		}
+	}
+
+
+	
+
+
+	shadow_camera = {
+		position = cylindrical { 330 220 265 }
+		look_at = { 0 0 0 }
+		look_at_node = camera_torso_look_at
+		fov = 50
+		camera_near_far = { 100 1350 }
+	}
+}
+
+environment_standard_V1 = {
+	cubemap = "gfx/portraits/environments/castle_interior_01_fire.dds"
+	cubemap_intensity = @main_cubemap_intensity
+
+	lights = {
+		#########################################################################
+		#								KEY LIGHT								#
+		#########################################################################
+		0 = {
+			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+			affected_by_shadow = yes
+
+			color = hsv{ 0.1 0.3 2.5 }	# Hue, saturation, value. Increase value for more intense lights
+			position = cylindrical{ @main_light_radius 	@main_light_height 	30 }	# Radius, height, angle
+
+			# For spot lights and directional lights
+			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+			# For spot lights and point lights
+			radius = 5000
+			falloff = 10
+
+			# For point lights
+			outer_cone_angle = 25
+			inner_cone_angle = 5
+		}
+
+		#########################################################################
+		#							RIGHT RIM LIGHT								#
+		#########################################################################
+		1 = {
+			type = "spot_light"
+			affected_by_shadow = no
+			color = hsv{ 0.05 0.8 0.8 }
+			position = cylindrical{ @main_light_radius 200 -120 }
+
+			look_at = { 0 -35 0 }
+			look_at_node = camera_torso_look_at
+
+			radius = 1000
+			falloff = 50
+
+			outer_cone_angle = 18
+			inner_cone_angle = 0
+		}
+
+		#########################################################################
+		#							LEFT RIM LIGHT								#
+		#########################################################################
+		2 = {
+			type = "directional_light"
+			affected_by_shadow = yes
+
+			color = hsv{ 0.6 0.3 3.6 }
+			position = cylindrical{ 200 100 -160 }
+
+			look_at = { 0 18 0 }
+		}
+	}
+
+	shadow_camera = {
+		position = cylindrical { @main_light_radius 	300	30 }	# Radius, height, angle
+		look_at = { 0 0	0 }
+		look_at_node = camera_torso_look_at
+		fov = 50
+		camera_near_far = { 100 500 }
+	}
+}
+
+
+environment_front_generals_left = {
+	cubemap = "gfx/portraits/environments/castle_interior_01_fire.dds"
+	cubemap_intensity = @main_cubemap_intensity
+
+	lights = {
+		#########################################################################
+		#								KEY LIGHT								#
+		#########################################################################
+		0 = {
+			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+			affected_by_shadow = yes
+
+			color = hsv{ 0.57 0.4 9 }	# Hue, saturation, value. Increase value for more intense lights
+			position = cylindrical{  80 180 -40 }	# Radius, height, angle
+
+			look_at = { 0 0 0 }
+			radius = 110
+			falloff = 10
+
+			outer_cone_angle = 5
+			inner_cone_angle = 55
+		}
+
+		#########################################################################
+		#							RIGHT RIM LIGHT								#
+		#########################################################################
+		1 = {
+			type = "spot_light"
+			affected_by_shadow = no
+			color = hsv{ 0.02 .5 10 }
+			position = cylindrical{ 150 -10 -30 }
+
+			look_at = { 0 -55 -10 }
+			look_at_node = camera_torso_look_at
+
+			radius = 250
+			falloff = 10
+
+			outer_cone_angle = 28
+			inner_cone_angle = 0
+		}
+
+		#########################################################################
+		#							LEFT RIM LIGHT								#
+		#########################################################################
+		2 = {
+			type = "directional_light"
+			affected_by_shadow = yes
+
+			color = hsv{ 0.5 0.6 5 }
+			position = cylindrical{ 190 100 -150 }
+
+			look_at = { 0 10 0 }
+
+
+		}
+	}
+
+	shadow_camera = {
+		position = cylindrical { @main_light_radius  300	40 }	# Radius, height, angle
+		look_at = { 0 0	0 }
+		look_at_node = camera_torso_look_at
+		fov = 50
+		camera_near_far = { 100 500 }
+	}
+}
+
+environment_front_generals_right = {
+	cubemap = "gfx/portraits/environments/castle_interior_01_fire.dds"
+	cubemap_intensity = @main_cubemap_intensity
+
+	lights = {
+		#########################################################################
+		#								KEY LIGHT								#
+		#########################################################################
+		0 = {
+			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+			affected_by_shadow = yes
+
+			color = hsv{ 0.5 0.2 8.5 }	# Hue, saturation, value. Increase value for more intense lights
+			position = cylindrical{  80 200 30 }	# Radius, height, angle
+
+			# For spot lights and directional lights
+			look_at = { 0 0 0 }
+			#look_at_node = camera_torso_look_at
+			# For spot lights and point lights
+			radius = 120
+			falloff = 10
+
+			# For point lights
+			outer_cone_angle = 5
+			inner_cone_angle = 55
+		}
+
+		#########################################################################
+		#							RIGHT RIM LIGHT								#
+		#########################################################################
+		1 = {
+			type = "spot_light"
+			affected_by_shadow = no
+			color = hsv{ 0.02 .5 10 }
+			position = cylindrical{ 150 -10 30 }
+
+			look_at = { 0 -55 -10 }
+			look_at_node = camera_torso_look_at
+
+			radius = 250
+			falloff = 10
+
+			outer_cone_angle = 28
+			inner_cone_angle = 0
+		}
+
+		#########################################################################
+		#							LEFT RIM LIGHT								#
+		#########################################################################
+		2 = {
+			type = "directional_light"
+			affected_by_shadow = yes
+
+			color = hsv{ 0.5 0.6 5 }
+			position = cylindrical{ 200 110 -230 }
+
+			look_at = { 0 10 0 }
+		}
+	}
+
+	shadow_camera = {
+		position = cylindrical { @main_light_radius 	300	30 }	# Radius, height, angle
+		look_at = { 0 0	0 }
+		look_at_node = camera_torso_look_at
+		fov = 50
+		camera_near_far = { 100 500 }
+	}
+}
+
+pop_environment = {
+	cubemap = "gfx/portraits/environments/events_farms_01.dds"
+ 	cubemap_intensity = 0.6
+
+ 	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.09 0.5 9 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ @main_light_radius  450 -50 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			# For spot lights and point lights
+			radius = 440
+ 			falloff = 30
+
+
+ 			# For point lights
+ 			outer_cone_angle = 30
+			inner_cone_angle = 0
+ 		}
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		1 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.05 0.8 7 }
+ 			position = cylindrical{ 200 200 199 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 1000
+ 			falloff = 100
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ .25 0.2 2 }
+ 			position = cylindrical{ 200 -100 90 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 550
+ 			falloff = 0
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 140 265 -40 }
+ 		look_at = { 0 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 50
+ 		camera_near_far = { 10 400 }
+	}
+}
+
+small_pop_environment = {
+	cubemap = "gfx/portraits/environments/events_farms_01.dds"
+ 	cubemap_intensity = 0.6
+
+ 	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.09 0.5 9 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ @main_light_radius  450 -30 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			# For spot lights and point lights
+			radius = 440
+ 			falloff = 30
+
+
+ 			# For point lights
+ 			outer_cone_angle = 30
+			inner_cone_angle = 0
+ 		}
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		1 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.05 0.7 16 }
+ 			position = cylindrical{ 800 300 140 }
+
+ 			look_at = { 0 -300 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 1600
+ 			falloff = 0
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.6 0.2 6 }
+ 			position = cylindrical{ 2000 500 -155 }
+
+ 			look_at = { 0 -300 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 3000
+ 			falloff = 100
+
+			outer_cone_angle = 78
+			inner_cone_angle = 40
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 140 265 -50 }
+ 		look_at = { 0 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 50
+ 		camera_near_far = { 10 400 }
+	}
+}
+
+characters_portrait_environment_right = {
+	cubemap = "gfx/portraits/environments/events_farms_01.dds"
+ 	cubemap_intensity = 1
+
+ 	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.2 2 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 211  220 390 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			# For spot lights and point lights
+			radius = 420
+ 			falloff = 30
+
+
+ 			# For point lights
+ 			outer_cone_angle = 30
+			inner_cone_angle = 0
+ 		}
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		1 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.12 0.2 4.5 }
+ 			position = cylindrical{ 500 620 420 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 2500
+ 			falloff = 1200
+
+			outer_cone_angle = 248
+			inner_cone_angle = 0
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.12 0.2 5 }
+ 			position = cylindrical{ 400 370 200 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 		radius = 2500
+ 			falloff = 1200
+
+		outer_cone_angle = 248
+			inner_cone_angle = 0
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 140 265 -50 }
+ 		look_at = { 0 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 50
+ 		camera_near_far = { 120 400 }
+	}
+}
+
+ treaty_portrait_environment_left = {
+	cubemap = "gfx/portraits/environments/events_farms_01.dds"
+ 	cubemap_intensity = 1
+
+ 	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.2 4 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 211  310 -40 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			# For spot lights and point lights
+			radius = 310
+ 			falloff = 30
+
+
+ 			# For point lights
+ 			outer_cone_angle = 30
+			inner_cone_angle = 0
+ 		}
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		1 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.12 0.2 4.5 }
+ 			position = cylindrical{ 400 370 -210 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 2500
+ 			falloff = 1200
+
+			outer_cone_angle = 248
+			inner_cone_angle = 0
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.01 2 }
+ 			position = cylindrical{ 100 300 -50 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 350
+ 			falloff = 100
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 140 265 -50 }
+ 		look_at = { 0 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 50
+ 		camera_near_far = { 120 400 }
+	}
+}
+
+characters_portrait_environment = {
+	cubemap = "gfx/portraits/environments/events_farms_01.dds"
+ 	cubemap_intensity = 0.6
+
+ 	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.4 6 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ @main_light_radius  450 -60 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			# For spot lights and point lights
+			radius = 420
+ 			falloff = 30
+
+
+ 			# For point lights
+ 			outer_cone_angle = 30
+			inner_cone_angle = 0
+ 		}
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		1 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.04 0.8 3 }
+ 			position = cylindrical{ 200 200 100 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 500
+ 			falloff = 100
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.8 6 }
+ 			position = cylindrical{ 200 300 -160 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 350
+ 			falloff = 100
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 140 265 -50 }
+ 		look_at = { 0 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 50
+ 		camera_near_far = { 10 400 }
+	}
+}
+
+leader_environment = {
+	cubemap = "gfx/portraits/environments/events_battlefield_01.dds"
+ 	cubemap_intensity = 0.8
+
+ 	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.09 0.7 6 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ @main_light_radius  450 -50 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			# For spot lights and point lights
+			radius = 440
+ 			falloff = 30
+
+
+ 			# For point lights
+ 			outer_cone_angle = 30
+			inner_cone_angle = 0
+ 		}
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		1 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.5 0.6 2 }
+ 			position = cylindrical{ 500 400 -145 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 1000
+ 			falloff = 100
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 1 0.8 1 }
+ 			position = cylindrical{ 200 100 70 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 350
+ 			falloff = 100
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 140 365 -60 }
+ 		look_at = { 0 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 50
+ 		camera_near_far = { 10 400 }
+	}
+}
+
+politician_environment = {
+	cubemap = "gfx/portraits/environments/castle_interior_01.dds"
+ 	cubemap_intensity = 3
+
+	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.2 4 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 270  280 -40 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			# For spot lights and point lights
+			radius = 410
+ 			falloff = 30
+
+
+ 			# For point lights
+ 			outer_cone_angle = 80
+			inner_cone_angle = 20
+ 		}
+
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		1 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.1 4 }
+ 			position = cylindrical{ 190 150 -112 }
+
+ 			look_at = { 0 -15 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 2100
+ 			falloff = 2200
+
+			outer_cone_angle = 2248
+			inner_cone_angle = 2210
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.2 0.1 2 }
+ 			position = cylindrical{ 170 120 -220 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 260
+ 			falloff = 100
+
+			outer_cone_angle = 288
+			inner_cone_angle = 0
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 140 250 220 }
+ 		look_at = { 0 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 70
+ 		camera_near_far = { 10 400 }
+	}
+}
+
+ruler_environment = {
+	cubemap = "gfx/portraits/environments/castle_interior_01.dds"
+ 	cubemap_intensity = 2
+
+ 	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.2 0.1 6 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 190 180 291 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			#
+ 			# For spot lights and point lights
+			radius = 2470
+ 			falloff = 1240
+
+
+ 			# For point lights
+ 			outer_cone_angle = 2510
+			inner_cone_angle = 35
+ 		}
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		#	RIM LIGHT FROM THE LEFT
+
+ 		1 = {
+ 		
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.2 0.2 1.8 }
+ 			position = cylindrical{ 160 241 -210 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 1200
+ 			falloff = 100
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.3 1 }
+ 			position = cylindrical{ 120 210 -120 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 1210
+ 			falloff = 100
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 180 425 275 }
+ 		look_at = { 20 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 820
+ 		camera_near_far = { 10 200 }
+	}
+}
+
+general_environment = {
+	cubemap = "gfx/portraits/environments/castle_interior_01.dds"
+ 	cubemap_intensity = 1.4
+
+ 	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.1 4 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 190 220 -50 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			# For spot lights and point lights
+			radius = 290
+ 			falloff = 50
+
+
+ 			# For point lights
+ 			outer_cone_angle = 30
+			inner_cone_angle = 0
+ 		}
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		1 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.3 7 }
+ 			position = cylindrical{ 500 350 150 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 1000
+ 			falloff = 100
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.05 0.8 5 }
+ 			position = cylindrical{ 200 220 -90 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 320
+ 			falloff = 100
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 140 65 -50 }
+ 		look_at = { 0 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 50
+ 		camera_near_far = { 10 400 }
+	}
+}
+
+general_environment_02 = {
+	cubemap = "gfx/portraits/environments/castle_interior_01.dds"
+ 	cubemap_intensity = 1.6
+
+ 	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.4 6.6 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 220  420 -60 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			# For spot lights and point lights
+			radius = 5240
+ 			falloff = 30
+
+
+ 			# For point lights
+ 			outer_cone_angle = 30
+			inner_cone_angle = 0
+ 		}
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		1 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 2 0.1 8 }
+ 			position = cylindrical{ 100 185 -150 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 3200
+ 			falloff = 200
+
+			outer_cone_angle = 428
+			inner_cone_angle = 0
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 1.1 0.1 2 }
+ 			position = cylindrical{ 200 280 120 }
+
+ 			look_at = { 0 -2 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 3220
+ 			falloff = 100
+
+			outer_cone_angle = 248
+			inner_cone_angle = 0
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 120 215 -100 }
+ 		look_at = { 0 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 50
+ 		camera_near_far = { 120 400 }
+	}
+}
+
+admiral_environment = {
+	cubemap = "gfx/portraits/environments/events_battlefield_01.dds"
+ 	cubemap_intensity = 1.1
+
+ 	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.21 0.1 5 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 311  220 295 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			# For spot lights and point lights
+			radius = 2377
+ 			falloff = 2230
+
+
+ 			# For point lights
+ 			outer_cone_angle = 30
+			inner_cone_angle = 0
+ 		}
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		1 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.1 1 }
+ 			position = cylindrical{ 120 155 230 }
+
+ 			look_at = { 12 -15 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 5300
+ 			falloff = 2200
+
+			outer_cone_angle = 2248
+			inner_cone_angle = 0
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.22 0.01 5 }
+ 			position = cylindrical{ 120 220 -222 }
+
+ 			look_at = { 0 -35 1 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 2210
+ 			falloff = 222
+
+			outer_cone_angle = 2220
+			inner_cone_angle = 10
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 610 165 220 }
+ 		look_at = { 0 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 150
+ 		camera_near_far = { 10 400 }
+	}
+}
+
+environment_event_01 = {
+	cubemap = "gfx/portraits/environments/castle_interior_01.dds"
+ 	cubemap_intensity = 1.8
+
+ 	lights = {
+ 		#########################################################################
+ 		#								KEY LIGHT								#
+ 		#########################################################################
+ 		0 = {
+ 			type = "spot_light"	# Valid types are "spot_light", "point_light", and "directional_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.5 11 }	# Hue, saturation, value. Increase value for more intense lights
+ 			position = cylindrical{ 110  420 -50 }	# Radius, height, angle
+
+ 			# For spot lights and directional lights
+ 			look_at = { 0 0 0 }
+			look_at_node = camera_torso_look_at
+
+ 			# For spot lights and point lights
+			radius = 340
+ 			falloff = 30
+
+
+ 			# For point lights
+ 			outer_cone_angle = 30
+			inner_cone_angle = 0
+ 		}
+
+ 		#########################################################################
+ 		#							RIGHT RIM LIGHT								#
+ 		#########################################################################
+ 		1 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.1 0.6 50 }
+ 			position = cylindrical{ 150 215 -205 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 220
+ 			falloff = 200
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+
+		#########################################################################
+ 		#							LEFT RIM LIGHT								#
+ 		#########################################################################
+ 		2 = {
+ 			type = "spot_light"
+ 			affected_by_shadow = yes
+
+ 			color = hsv{ 0.05 0.9 30 }
+ 			position = cylindrical{ 200 260 -165 }
+
+ 			look_at = { 0 -35 0 }
+ 			look_at_node = camera_torso_look_at
+
+ 			radius = 260
+ 			falloff = 100
+
+			outer_cone_angle = 48
+			inner_cone_angle = 0
+ 		}
+ 	}
+
+ 	shadow_camera = {
+ 		position = cylindrical{ 140 265 -80 }
+ 		look_at = { 0 0 0 }
+ 		look_at_node = camera_torso_look_at
+ 		fov = 50
+ 		camera_near_far = { 10 400 }
+	}
+}

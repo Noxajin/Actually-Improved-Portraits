@@ -1,0 +1,12 @@
+{
+  "name" : "Actually Improved Portraits",
+	"id" : "",
+  "version" : "1.0.0",
+  "supported_game_version" : "1.1.*",
+  "short_description" : "Edits the gene pool of characters rather than the camera and lighting unike other portrait tweaking mods to fix the source of victoria 3's ugly character problem.",
+  "tags" : [Graphics],
+  "relationships" : [],
+  "game_custom_data" : {
+    "multiplayer_synchronized" : true
+  }
+}
